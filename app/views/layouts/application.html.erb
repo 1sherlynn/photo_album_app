@@ -18,7 +18,7 @@
 
             <% if user_signed_in? %>
             <ul class="nav navbar-nav navbar-left">
-              <li><%= link_to "Add a new photo", new_album_photo_path(:album_id) %></li>
+              <li><%= link_to "Add a new album", new_album_path %></li>
               <li><%= link_to "Settings", edit_user_registration_path %></li>
               <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
             </ul>

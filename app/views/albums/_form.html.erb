@@ -1,0 +1,20 @@
+<%= simple_form_for @album, html: {multipart: true}, url: albums_path do |f|  %>
+	<% if @album.errors.any? %>
+		<div id="errors"> 
+			<h2> <%= pluralize(@album.errors.count, "error") %> prevented this Photo from saving </h2> 
+			<ul> <% @album.errors.full_messages.each do |msg| %>
+				<li> <%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	
+	
+	<%= f.input :title, input_html: {class:'form-control' }  %>
+	<%= f.input :description, input_html: {class:'form-control' }  %>
+
+
+
+	<%= f.button :submit, class: "btn btn-info" %>
+<% end %>
