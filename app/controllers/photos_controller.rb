@@ -11,11 +11,18 @@ before_action :find_photo, only: [:show, :edit, :update, :destroy]
 	end
 
 	def new
-		@photo = Photo.new
+		@album = Album.find(params[:album_id])
+		@album.user_id = current_user.id
+		@photo = current_user.album.photos.new
 	end
 
+
 	def create 
-		@photo = Photo.new(photo_params)
+		album = Album.find(params[:album_id])
+		@album.user_id = current_user.id
+		@photo = current_user.album.photos.new(photo_params) 
+
+
 		if @photo.save
 			redirect_to @photo, notice: "Succesfully posted."
 		else 
@@ -42,12 +49,13 @@ before_action :find_photo, only: [:show, :edit, :update, :destroy]
 
 	private 
 	def photo_params 
-		params.require(:photo).permit(:title, :description, :avatar, :body)
+		params.require(:photo).permit(:title, :description, :avatar, :body, :album_id)
 	end
 
 	def find_photo
 		@photo = Photo.find(params[:id])
 	end
+
 
 end
 
