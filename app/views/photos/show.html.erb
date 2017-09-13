@@ -1,0 +1,14 @@
+<h1> <%= @photo.title %> </h1>
+
+<p> <%= @photo.description %></p>
+<p> <%= @photo.user.email %></p>
+<%= image_tag @photo.avatar.url %> 
+<br>
+<br>
+
+
+
+<%= link_to "Back", root_path %>
+<%= link_to "Edit", edit_album_photo_path(:album_id) %>
+<%= link_to "Delete", album_photo_path(:album_id), method: :delete, 
+	data: {confirm: "Are you sure?"}%>

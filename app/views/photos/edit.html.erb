@@ -1,0 +1,22 @@
+<div class="edit_page col-md-8 col-md-offset-2">
+	<div class="row">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h1>Edit Photo Post</h1>
+			</div>
+
+			<div class="panel-body">
+			 <div class="current_image">
+				<strong class="center">Right now</strong><br>
+					<%= image_tag @photo.avatar.url %>
+			</div>
+
+				<%= render 'form' %>
+
+				<%= link_to "Cancel", album_photo_path(:album_id) %> 
+			</div>
+
+			
+		</div>
+	</div>
+</div>

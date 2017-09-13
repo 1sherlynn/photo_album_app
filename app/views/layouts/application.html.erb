@@ -9,6 +9,42 @@
   </head>
 
   <body>
+<!-- navbar start --> 
+   <div class="nav navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-brand"> 
+          <%= link_to "Photo Album Application", root_path %> 
+         </div>
+
+            <% if user_signed_in? %>
+            <ul class="nav navbar-nav navbar-left">
+              <li><%= link_to "Add a new photo", new_album_photo_path(:album_id) %></li>
+              <li><%= link_to "Settings", edit_user_registration_path %></li>
+              <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+            </ul>
+
+            <% else %>
+            <ul class="nav navbar-nav navbar-left">
+              <li><%= link_to "Join", new_user_registration_path %></li>
+              <li><%= link_to "Log In", new_user_session_path %></li>            
+            </ul>
+            <% end %>
+        
+      </div>
+    </div>
+<!-- navbar end --> 
+
+
+
+<!-- flash start --> 
+  	<% flash.each do |name, msg| %>
+  		<%= content_tag :div, msg, class: "alert alert-info"%>
+  	 <% end %>
+<!-- flash end --> 
+
+<!-- yield start --> 
     <%= yield %>
+<!-- yield start --> 
+
   </body>
 </html>
